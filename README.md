@@ -11,7 +11,7 @@ We can start script execution form:
 
 1. appointment-booking-table-creation: Script for table creation and data insertion.
 2. appointment-booking-views: Script for creating views.
-3. appointment-booking-users: Script for creating users.
+3. appointment-booking-user-creation: Script for creating users.
 4. appointment-booking-read: Script for granting Read access.
 5. appointment-booking-write: Script for granting read access.
 
