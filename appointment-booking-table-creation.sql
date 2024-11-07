@@ -305,15 +305,9 @@ VALUES (5, 'Ethan Hunt', '5555555555', TO_DATE('1988-02-28', 'YYYY-MM-DD'), 'M',
 
 -- Insert Sample Data for DOCTOR_SCHEDULE with random dates
 INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
-VALUES (1, TO_DATE('10-30-24', 'MM-DD-YY'), 1, 5);  -- Past date
+VALUES (1, TO_DATE('10-30-24', 'MM-DD-YY'), 1, 2);  -- Past date
 INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
-VALUES (2, TO_DATE('11-04-24', 'MM-DD-YY'), 2, 3);  -- Past date
-INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
-VALUES (3, TO_DATE('11-06-24', 'MM-DD-YY'), 3, 4);  -- Today
-INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
-VALUES (4, TO_DATE('11-08-24', 'MM-DD-YY'), 4, 6);  -- Future date
-INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
-VALUES (5, TO_DATE('12-01-24', 'MM-DD-YY'), 5, 2);  -- Future date
+VALUES (2, TO_DATE('11-04-24', 'MM-DD-YY'), 2, 2);  -- Future date
 
 -- Insert Sample Data for APPOINTMENT with random dates
 INSERT INTO Appointment (appointment_id, appointment_date, patient_id, doctor_id, appoint_status, appointment_time) 
@@ -353,15 +347,13 @@ VALUES (5, 'Pediatric Test', 'Healthy', TO_DATE('11-20-24', 'MM-DD-YY'), 5, 5);
 
 -- Insert Sample Data for TIME_SLOT
 INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
-VALUES (1, TO_DATE('11-06-24 09:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-06-24 10:00 AM', 'MM-DD-YY HH:MI AM'), 'Y', 1, 1);
+VALUES (1, TO_DATE('11-06-24 09:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-06-24 10:00 AM', 'MM-DD-YY HH:MI AM'), 'Y', 1, null);
 INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
-VALUES (2, TO_DATE('11-06-24 10:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-06-24 11:00 AM', 'MM-DD-YY HH:MI AM'), 'N', 2, 2);
+VALUES (2, TO_DATE('11-06-24 10:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-06-24 11:00 AM', 'MM-DD-YY HH:MI AM'), 'N', 1, 2);
 INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
-VALUES (3, TO_DATE('11-08-24 01:00 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-08-24 02:00 PM', 'MM-DD-YY HH:MI AM'), 'Y', 3, 3);
+VALUES (3, TO_DATE('11-08-24 01:00 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-08-24 02:00 PM', 'MM-DD-YY HH:MI AM'), 'N', 2, 3);
 INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
-VALUES (4, TO_DATE('11-20-24 03:00 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-20-24 04:00 PM', 'MM-DD-YY HH:MI AM'), 'Y', 4, 4);
-INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
-VALUES (5, TO_DATE('12-10-24 02:00 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-10-24 03:00 PM', 'MM-DD-YY HH:MI AM'), 'N', 5, 5);
+VALUES (4, TO_DATE('11-20-24 03:00 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-20-24 04:00 PM', 'MM-DD-YY HH:MI AM'), 'N', 2, 4);
 
 -- Insert Sample Data for FEEDBACK
 INSERT INTO FEEDBACK (feedback_id, satisfaction_rating, comments, appointment_id) 
