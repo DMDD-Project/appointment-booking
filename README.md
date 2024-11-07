@@ -8,12 +8,12 @@ In today’s dynamic healthcare industry, hospitals face the challenge of bookin
 ## Instructions for script execution
 
 We can start script execution form:
-
-1. appointment-booking-table-creation: Script for table creation and data insertion.
-2. appointment-booking-views: Script for creating views.
-3. appointment-booking-user-creation: Script for creating users.
-4. appointment-booking-read: Script for granting Read access.
-5. appointment-booking-write: Script for granting read access.
+1. Root admin will create APPADMIN user for appication design
+2. appointment-booking-table-creation: Script for table creation and data insertion.
+3. appointment-booking-views: Script for creating views.
+4. appointment-booking-user-creation: Script for creating users.(only creating users wil be done by root admin as appadmin dont have privilages)
+5. appointment-booking-read: Script for granting Read access.
+6. appointment-booking-write: Script for granting read access.
 
 
 ![alt text](image-3.png)
