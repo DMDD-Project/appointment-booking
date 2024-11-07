@@ -1,12 +1,5 @@
 BEGIN
-  -- Granting session privileges to all users
-  BEGIN
-    EXECUTE IMMEDIATE 'GRANT CREATE SESSION, CONNECT TO RECEPTIONIST, DOCTOR, DEPARTMENT_HEAD, LAB_TECHNICIAN, PATIENT';
-    DBMS_OUTPUT.PUT_LINE('Session privileges granted to all users');
-  EXCEPTION
-    WHEN OTHERS THEN
-      DBMS_OUTPUT.PUT_LINE('Error granting session privileges to users');
-  END;
+  
 
   -- Granting read access on "appointment_history_view"
   BEGIN
