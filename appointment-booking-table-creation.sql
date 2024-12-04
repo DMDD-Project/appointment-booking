@@ -278,18 +278,18 @@ INSERT INTO DEPARTMENT (department_id, department_name) VALUES (2, 'Neurology');
 INSERT INTO DEPARTMENT (department_id, department_name) VALUES (3, 'Orthopedics');
 INSERT INTO DEPARTMENT (department_id, department_name) VALUES (4, 'Dermatology');
 INSERT INTO DEPARTMENT (department_id, department_name) VALUES (5, 'Pediatrics');
+INSERT INTO DEPARTMENT (department_id, department_name) VALUES (6, 'Oncology');
 
 -- Insert Sample Data for DOCTOR
 INSERT INTO DOCTOR (doctor_id, doctor_name, doctor_specialisation, department_id, experience_years, contact_number, email) 
 VALUES (1, 'Dr. John Doe', 'Cardiologist', 1, 10, '1234567890', 'johndoe@hospital.com');
 INSERT INTO DOCTOR (doctor_id, doctor_name, doctor_specialisation, department_id, experience_years, contact_number, email) 
-VALUES (2, 'Dr. Jane Smith', 'Neurologist', 2, 8, '0987654321', 'janesmith@hospital.com');
+VALUES (2, 'Dr. Jane Smith', 'Neurologist', 2, 7, '0987654321', 'janesmith@hospital.com');
 INSERT INTO DOCTOR (doctor_id, doctor_name, doctor_specialisation, department_id, experience_years, contact_number, email) 
 VALUES (3, 'Dr. Emily Brown', 'Orthopedic', 3, 5, '1122334455', 'emilybrown@hospital.com');
 INSERT INTO DOCTOR (doctor_id, doctor_name, doctor_specialisation, department_id, experience_years, contact_number, email) 
 VALUES (4, 'Dr. Robert White', 'Dermatologist', 4, 15, '2233445566', 'robertwhite@hospital.com');
-INSERT INTO DOCTOR (doctor_id, doctor_name, doctor_specialisation, department_id, experience_years, contact_number, email) 
-VALUES (5, 'Dr. Sarah Johnson', 'Pediatrician', 5, 12, '3344556677', 'sarahjohnson@hospital.com');
+
 
 -- Insert Sample Data for PATIENT
 INSERT INTO PATIENT (patient_id, patient_name, contact_number, date_of_birth, gender, email, address) 
@@ -302,12 +302,21 @@ INSERT INTO PATIENT (patient_id, patient_name, contact_number, date_of_birth, ge
 VALUES (4, 'Diana Prince', '4444444444', TO_DATE('1992-11-10', 'YYYY-MM-DD'), 'F', 'dianaprince@gmail.com', '321 Pine St, Springfield');
 INSERT INTO PATIENT (patient_id, patient_name, contact_number, date_of_birth, gender, email, address) 
 VALUES (5, 'Ethan Hunt', '5555555555', TO_DATE('1988-02-28', 'YYYY-MM-DD'), 'M', 'ethanhunt@gmail.com', '654 Cedar St, Springfield');
+INSERT INTO PATIENT (patient_id, patient_name, contact_number, date_of_birth, gender, email, address) 
+VALUES (6, 'Frank West', '6666666666', TO_DATE('1991-06-10', 'YYYY-MM-DD'), 'M', 'frankwest@gmail.com', '987 Lake St, Springfield');
 
 -- Insert Sample Data for DOCTOR_SCHEDULE with random dates
 INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
-VALUES (1, TO_DATE('10-30-24', 'MM-DD-YY'), 1, 2);  -- Past date
+VALUES (1, TO_DATE('12-10-24', 'MM-DD-YY'), 1, 2);
 INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
-VALUES (2, TO_DATE('11-04-24', 'MM-DD-YY'), 2, 2);  -- Future date
+VALUES (2, TO_DATE('12-11-24', 'MM-DD-YY'), 1, 2);
+INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
+VALUES (3, TO_DATE('12-12-24', 'MM-DD-YY'), 2, 2);
+INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
+VALUES (4, TO_DATE('12-12-24', 'MM-DD-YY'), 3, 2);
+INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
+VALUES (5, TO_DATE('12-14-24', 'MM-DD-YY'), 4, 1);
+
 
 -- Insert Sample Data for APPOINTMENT with random dates
 INSERT INTO Appointment (appointment_id, appointment_date, patient_id, doctor_id, appoint_status, appointment_time) 
@@ -320,6 +329,8 @@ INSERT INTO Appointment (appointment_id, appointment_date, patient_id, doctor_id
 VALUES (4, TO_DATE('11-20-24', 'MM-DD-YY'), 4, 4, 'Scheduled', TO_DATE('11-20-24 02:00 PM', 'MM-DD-YY HH:MI AM'));  -- Future date
 INSERT INTO Appointment (appointment_id, appointment_date, patient_id, doctor_id, appoint_status, appointment_time) 
 VALUES (5, TO_DATE('12-10-24', 'MM-DD-YY'), 5, 5, 'Scheduled', TO_DATE('12-10-24 11:00 AM', 'MM-DD-YY HH:MI AM'));  -- Future date
+INSERT INTO Appointment (appointment_id, appointment_date, patient_id, doctor_id, appoint_status, appointment_time) 
+VALUES (6, TO_DATE('11-10-24', 'MM-DD-YY'), 6, 6, 'Scheduled', TO_DATE('11-10-24 09:00 AM', 'MM-DD-YY HH:MI AM')); -- Future date
 
 -- Insert Sample Data for LAB
 INSERT INTO LAB (lab_id, name, specialty, department_id, contact_number) 
@@ -332,6 +343,8 @@ INSERT INTO LAB (lab_id, name, specialty, department_id, contact_number)
 VALUES (4, 'Lab D', 'Allergy Test', 4, '9999999999');
 INSERT INTO LAB (lab_id, name, specialty, department_id, contact_number) 
 VALUES (5, 'Lab E', 'Pediatric Test', 5, '0000000000');
+INSERT INTO LAB (lab_id, name, specialty, department_id, contact_number) 
+VALUES (6, 'Lab F', 'Pathology Test', 6, '1231231234');
 
 -- Insert Sample Data for LAB_TEST
 INSERT INTO LAB_TEST (test_id, test_type, result, test_date, appointment_id, lab_id) 
@@ -344,16 +357,28 @@ INSERT INTO LAB_TEST (test_id, test_type, result, test_date, appointment_id, lab
 VALUES (4, 'Allergy Test', 'Mild Allergy', TO_DATE('11-08-24', 'MM-DD-YY'), 4, 4);
 INSERT INTO LAB_TEST (test_id, test_type, result, test_date, appointment_id, lab_id) 
 VALUES (5, 'Pediatric Test', 'Healthy', TO_DATE('11-20-24', 'MM-DD-YY'), 5, 5);
+INSERT INTO LAB_TEST (test_id, test_type, result, test_date, appointment_id, lab_id) 
+VALUES (6, 'Pathology Test', 'Pending', TO_DATE('11-10-24', 'MM-DD-YY'), 6, 6);
 
 -- Insert Sample Data for TIME_SLOT
 INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
-VALUES (1, TO_DATE('11-06-24 09:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-06-24 10:00 AM', 'MM-DD-YY HH:MI AM'), 'Y', 1, null);
+VALUES (1, TO_DATE('12-10-24 09:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-10-24 10:00 AM', 'MM-DD-YY HH:MI AM'), 'Y', 1, null);
 INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
-VALUES (2, TO_DATE('11-06-24 10:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-06-24 11:00 AM', 'MM-DD-YY HH:MI AM'), 'N', 1, 2);
+VALUES (2, TO_DATE('12-10-24 10:30 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-10-24 11:30 AM', 'MM-DD-YY HH:MI AM'), 'Y', 1, null);
 INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
-VALUES (3, TO_DATE('11-08-24 01:00 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-08-24 02:00 PM', 'MM-DD-YY HH:MI AM'), 'N', 2, 3);
+VALUES (3, TO_DATE('12-11-24 10:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-11-24 11:00 AM', 'MM-DD-YY HH:MI AM'), 'Y', 2, null);
 INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
-VALUES (4, TO_DATE('11-20-24 03:00 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('11-20-24 04:00 PM', 'MM-DD-YY HH:MI AM'), 'N', 2, 4);
+VALUES (4, TO_DATE('12-11-24 11:30 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-11-24 12:30 PM', 'MM-DD-YY HH:MI AM'), 'Y', 2, null);
+INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
+VALUES (5, TO_DATE('12-12-24 10:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-12-24 11:00 AM', 'MM-DD-YY HH:MI AM'), 'Y', 3, null);
+INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
+VALUES (6, TO_DATE('12-12-24 02:00 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-12-24 03:00 PM', 'MM-DD-YY HH:MI AM'), 'Y', 3, null);
+INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
+VALUES (7, TO_DATE('12-12-24 01:00 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-12-24 02:00 PM', 'MM-DD-YY HH:MI AM'), 'Y', 4, null);
+INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
+VALUES (8, TO_DATE('12-12-24 02:30 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-12-24 03:30 PM', 'MM-DD-YY HH:MI AM'), 'Y', 4, null);
+INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
+VALUES (9, TO_DATE('12-14-24 10:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-14-24 11:00 AM', 'MM-DD-YY HH:MI AM'), 'Y', 5, null);
 
 -- Insert Sample Data for FEEDBACK
 INSERT INTO FEEDBACK (feedback_id, satisfaction_rating, comments, appointment_id) 
@@ -366,3 +391,8 @@ INSERT INTO FEEDBACK (feedback_id, satisfaction_rating, comments, appointment_id
 VALUES (4, 3, 'Test results took longer than expected.', 4);
 INSERT INTO FEEDBACK (feedback_id, satisfaction_rating, comments, appointment_id) 
 VALUES (5, 4, 'Satisfied with the overall care.', 5);
+INSERT INTO FEEDBACK (feedback_id, satisfaction_rating, comments, appointment_id) 
+VALUES (6, 5, 'Excellent care and service.', 6);
+
+
+commit;
