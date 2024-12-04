@@ -290,7 +290,6 @@ VALUES (3, 'Dr. Emily Brown', 'Orthopedic', 3, 5, '1122334455', 'emilybrown@hosp
 INSERT INTO DOCTOR (doctor_id, doctor_name, doctor_specialisation, department_id, experience_years, contact_number, email) 
 VALUES (4, 'Dr. Robert White', 'Dermatologist', 4, 15, '2233445566', 'robertwhite@hospital.com');
 
-
 -- Insert Sample Data for PATIENT
 INSERT INTO PATIENT (patient_id, patient_name, contact_number, date_of_birth, gender, email, address) 
 VALUES (1, 'Alice Williams', '1111111111', TO_DATE('1990-01-01', 'YYYY-MM-DD'), 'F', 'alicewilliams@gmail.com', '123 Main St, Springfield');
@@ -313,9 +312,11 @@ VALUES (2, TO_DATE('12-11-24', 'MM-DD-YY'), 1, 2);
 INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
 VALUES (3, TO_DATE('12-12-24', 'MM-DD-YY'), 2, 2);
 INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
+
 VALUES (4, TO_DATE('12-12-24', 'MM-DD-YY'), 3, 2);
 INSERT INTO DOCTOR_SCHEDULE (schedule_id, schedule_date, doctor_id, slots_available_tobook)
 VALUES (5, TO_DATE('12-14-24', 'MM-DD-YY'), 4, 1);
+
 
 
 -- Insert Sample Data for APPOINTMENT with random dates
@@ -380,6 +381,7 @@ VALUES (8, TO_DATE('12-12-24 02:30 PM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-12-24 
 INSERT INTO TIME_SLOT (slot_id, start_time, end_time, is_available, schedule_id, appointment_id) 
 VALUES (9, TO_DATE('12-14-24 10:00 AM', 'MM-DD-YY HH:MI AM'), TO_DATE('12-14-24 11:00 AM', 'MM-DD-YY HH:MI AM'), 'Y', 5, null);
 
+
 -- Insert Sample Data for FEEDBACK
 INSERT INTO FEEDBACK (feedback_id, satisfaction_rating, comments, appointment_id) 
 VALUES (1, 5, 'Excellent service!', 1);
@@ -394,5 +396,5 @@ VALUES (5, 4, 'Satisfied with the overall care.', 5);
 INSERT INTO FEEDBACK (feedback_id, satisfaction_rating, comments, appointment_id) 
 VALUES (6, 5, 'Excellent care and service.', 6);
 
-
 commit;
+
