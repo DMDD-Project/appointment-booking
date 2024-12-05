@@ -3,6 +3,72 @@
 
 SET SERVEROUTPUT ON;
 
+------------------------------------ Will show all upcoming appointments for a doctor -------------------------------------------
+DECLARE
+    v_doctor_id INT := 1;
+    appointment_cursor SYS_REFCURSOR;
+    appointment_id INT;
+    appointment_date DATE;
+    patient_name VARCHAR2(100);
+    appointment_time DATE;
+    v_doctor_name VARCHAR2(100);
+    v_doctor_specialisation VARCHAR2(50);
+
+BEGIN
+    -- Fetch Doctor details
+    SELECT D.doctor_name, D.doctor_specialisation
+    INTO v_doctor_name, v_doctor_specialisation
+    FROM DOCTOR D
+    WHERE D.doctor_id = v_doctor_id;
+
+    DBMS_OUTPUT.PUT_LINE('Doctor Name: ' || v_doctor_name);
+    DBMS_OUTPUT.PUT_LINE('Specialization: ' || v_doctor_specialisation);
+    DBMS_OUTPUT.PUT_LINE('=========================================');
+
+    -- Get the next appointment(s) using the function
+    appointment_cursor := GetNextAppointment(v_doctor_id);
+
+    -- Fetch all appointments and display details
+    LOOP
+        FETCH appointment_cursor INTO appointment_id, appointment_date, patient_name, appointment_time;
+        EXIT WHEN appointment_cursor%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE('Appointment ID: ' || appointment_id);
+        DBMS_OUTPUT.PUT_LINE('Appointment Date: ' || TO_CHAR(appointment_date, 'DD-MON-YYYY'));
+        DBMS_OUTPUT.PUT_LINE('Patient Name: ' || patient_name);
+        DBMS_OUTPUT.PUT_LINE('Appointment Time: ' || TO_CHAR(appointment_time, 'HH24:MI'));
+        DBMS_OUTPUT.PUT_LINE('-----------------------------------------');
+    END LOOP;
+
+    CLOSE appointment_cursor;
+
+    DBMS_OUTPUT.PUT_LINE('Report generation completed.');
+
+END;
+/
+
+---------------------------------------------- Will Show total lab tests done under a department ----------------------------------
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+    v_department_id DEPARTMENT.DEPARTMENT_ID%TYPE;
+    v_lab_workload NUMBER;
+BEGIN
+
+    v_department_id := 2;
+
+    -- Fetch lab workload using the function
+    v_lab_workload := GetLabWorkload(v_department_id);
+
+    -- Print the report
+    DBMS_OUTPUT.PUT_LINE('Lab Workload Report for Department ID: ' || v_department_id);
+    DBMS_OUTPUT.PUT_LINE('-------------------------------------------------');
+    DBMS_OUTPUT.PUT_LINE('Total Lab Tests Conducted: ' || v_lab_workload);
+    DBMS_OUTPUT.PUT_LINE('-------------------------------------------------');
+END;
+/
+
 DECLARE
     v_doctor_id DOCTOR.DOCTOR_ID%TYPE;
     v_start_time DATE;
@@ -33,7 +99,7 @@ END;
 
 
 
--- 2.A patient Report of appointments and history of lab test--
+-- A patient Report of appointments and history of lab test--
 
 SET SERVEROUTPUT ON;
 
@@ -104,7 +170,7 @@ BEGIN
 END;
 /
 
---3. Feedback Report for an Appointment--   
+-- Feedback Report for an Appointment--   
 
 SET SERVEROUTPUT ON;
 
