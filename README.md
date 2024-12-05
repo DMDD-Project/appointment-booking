@@ -14,6 +14,12 @@ We can start script execution form:
 4. appointment-booking-user-creation: Script for creating users.(only creating users wil be done by root admin as appadmin dont have privilages)
 5. appointment-booking-read: Script for granting Read access.
 6. appointment-booking-write: Script for granting read access.
-
+7. LAB_TEST_STORED_PROCEDURE: Stored procedure 1
+8. apppoint-booking-storedProcedures-insertion Stored Procedure 2
+9. Patient_Onboarding_Stored_Procedure Stored Procedure 3
+10. appointment-booking-functions: functions
+11. appointment-booking-indexes.sql: indexes
+12. appointment-booking-packages.sql
+    
 
 ![alt text](image-3.png)
