@@ -180,10 +180,10 @@ END;
 -- 1. Insert Valid Data
 BEGIN
     insert_appointment(
-        p_patient_id => 1,
-        p_doctor_id => 2,
-        p_appointment_date => TO_DATE('2024-12-10', 'YYYY-MM-DD'),
-        p_appointment_time => TO_DATE('2024-12-10 10:00:00', 'YYYY-MM-DD HH24:MI:SS'),
+        p_patient_id => 2,
+        p_doctor_id => 3,
+        p_appointment_date => TO_DATE('2024-12-12', 'YYYY-MM-DD'),
+        p_appointment_time => TO_DATE('2024-12-12 14:30:00', 'YYYY-MM-DD HH24:MI:SS'),
         p_status => 'Scheduled'
     );
 END;
